@@ -41,7 +41,7 @@
           <p>---------------------------</p>
 
           <!-- TOTAL -->
-          <p><b>Total:</b> <span style="float:right;"><t t-esc="'Rp {:,.0f}'.format(line.amount_total)"/></span></p>
+          <p><b>Total:</b> <span style="float:right;"><t t-esc="'Rp {:,.0f}'.format(inv.amount_total)"/></span></p>
           <p><b>Status:</b> <t t-esc="inv.payment_state"/></p>
 
           <p style="text-align:center;">---------------------------</p>
@@ -59,3 +59,4 @@
     </t>
   </template>
 </odoo>
+
