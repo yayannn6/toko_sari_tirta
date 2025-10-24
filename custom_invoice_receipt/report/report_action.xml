@@ -1,0 +1,42 @@
+<odoo>
+    <record id="paperformat_receipt_80mm" model="report.paperformat">
+        <field name="name">Receipt 80mm</field>
+        <field name="default" eval="False"/>
+        <field name="format">custom</field>
+        <field name="page_height">0</field>
+        <field name="page_width">80</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">203</field>
+    </record>
+
+    <record id="action_report_receipt_invoice" model="ir.actions.report">
+        <field name="name">Invoice Receipt</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_invoice_receipt.report_receipt_invoice</field>
+        <field name="report_file">custom_invoice_receipt.report_receipt_invoice</field>
+        <field name="paperformat_id" ref="custom_invoice_receipt.paperformat_receipt_80mm"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_receipt_sale" model="ir.actions.report">
+        <field name="name">Sales Order Receipt</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_invoice_receipt.report_receipt_sale</field>
+        <field name="report_file">custom_invoice_receipt.report_receipt_sale</field>
+        <field name="paperformat_id" ref="custom_invoice_receipt.paperformat_receipt_80mm"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    
+</odoo>
+

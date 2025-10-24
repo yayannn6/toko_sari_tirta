@@ -1,0 +1,64 @@
+<odoo>
+  <template id="report_receipt_sale">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="so">
+        <t t-set="company" t-value="so.company_id"/>
+        <div style="width:210px; font-size:10px; font-family:'Courier New', monospace;">
+
+          <!-- HEADER COMPANY INFO -->
+          <div style="text-align:center;">
+            <t t-if="company.logo">
+              <img t-att-src="'data:image/png;base64,%s' % company.logo.decode('utf-8')" width="60" style="margin-bottom:5px;"/>
+            </t>
+            <h3 style="margin:0;"><t t-esc="company.name"/></h3>
+            <p style="margin:0;"><t t-esc="company.street or ''"/></p>
+            <p style="margin:0;"><t t-esc="company.phone or ''"/></p>
+            <p style="margin:0;"><t t-esc="company.website or ''"/></p>
+            <p>---------------------------</p>
+          </div>
+
+          <!-- INFO -->
+          <p><b>No:</b> <t t-esc="so.name"/></p>
+          <p><b>Tanggal:</b> <t t-esc="so.date_order"/></p>
+          <p><b>Pelanggan:</b> <t t-esc="so.partner_id.name"/></p>
+          <p>---------------------------</p>
+
+          <!-- ITEM LIST -->
+          <table style="width:100%; border:0; font-size:10px;">
+            <t t-foreach="so.order_line" t-as="line">
+              <tr>
+                <td colspan="2"><t t-esc="line.product_id.display_name"/></td>
+              </tr>
+              <tr>
+                <td><t t-esc="line.product_uom_qty"/> x <t t-esc="'Rp {:,.0f}'.format(line.price_unit)"/></td>
+                <td style="text-align:right;">
+                  <t t-esc="'Rp {:,.0f}'.format(line.price_subtotal)"/>
+                </td>
+              </tr>
+            </t>
+          </table>
+
+          <p>---------------------------</p>
+
+          <!-- TOTAL -->
+          <p><b>Total:</b>
+            <span style="float:right;">
+              <t t-esc="'Rp {:,.0f}'.format(so.amount_total)"/>
+            </span>
+          </p>
+
+          <p style="text-align:center;">---------------------------</p>
+
+          <!-- FOOTER -->
+          <div style="text-align:center;">
+            <p>Terima kasih telah berbelanja di <t t-esc="company.name"/>!</p>
+            <p>Kami tunggu kedatangan Anda kembali!</p>
+            <p>---------------------------</p>
+            <p style="font-size:8px;">Dicetak pada <t t-esc="so.create_date.strftime('%d-%m-%Y %H:%M')"/></p>
+          </div>
+
+        </div>
+      </t>
+    </t>
+  </template>
+</odoo>
