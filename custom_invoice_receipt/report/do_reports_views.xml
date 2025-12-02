@@ -1,0 +1,35 @@
+<odoo>
+    <template id="truk_belanja_template">
+        <t t-call="web.external_layout">
+            <div style="font-size:12px; width: 420px;">
+
+                <h3 style="text-align:center;">
+                    DAFTAR BARANG
+                </h3>
+                <hr/>
+
+                <table style="width:100%; font-size:12px;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;">Barang</th>
+                            <th style="text-align:right;">Qty</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <t t-foreach="lines" t-as="line">
+                            <tr>
+                                <td><t t-esc="line['product_name']"/></td>
+                                <td style="text-align:right;">
+                                    <t t-esc="line['qty']"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+                <hr/>
+            </div>
+        </t>
+    </template>
+</odoo>
