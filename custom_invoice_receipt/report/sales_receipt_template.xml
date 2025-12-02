@@ -37,12 +37,12 @@
                   </td>
                 </tr>
               </t>
-              <t-else="">
+              <t t-else="">
                 <tr>
                   <td colspan="2" style="font-size:9px; color:#444;">
                   </td>
                 </tr>
-              </t-else>
+              </t>
 
               <tr>
                 <td><t t-esc="line.product_uom_qty"/> x <t t-esc="'Rp {:,.0f}'.format(line.price_unit)"/></td>
