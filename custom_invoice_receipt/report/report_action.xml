@@ -37,7 +37,7 @@
         <field name="binding_type">report</field>
     </record>
 
-    <record id="action_truk_belanja_report" model="ir.actions.report">
+    <!-- <record id="action_truk_belanja_report" model="ir.actions.report">
         <field name="name">Rekap Delivery</field>
         <field name="model">stock.picking</field>
         <field name="report_type">qweb-pdf</field>
@@ -46,7 +46,7 @@
         <field name="paperformat_id" ref="custom_invoice_receipt.paperformat_receipt_80mm"/>
         <field name="binding_model_id" ref="sale.model_stock_picking"/>
         <field name="binding_type">report</field>
-    </record>
+    </record> -->
 
     
 </odoo>
