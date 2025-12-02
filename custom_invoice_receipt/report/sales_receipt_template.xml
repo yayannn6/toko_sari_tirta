@@ -66,8 +66,7 @@
 
           <!-- FOOTER -->
           <div style="text-align:center;">
-            <p>Terima kasih telah berbelanja di <t t-esc="company.name"/>!</p>
-            <p>Kami tunggu kedatangan Anda kembali!</p>
+            <p>Terima kasih!</p>
             <p>---------------------------</p>
             <p style="font-size:8px;">Dicetak pada <t t-esc="so.create_date.strftime('%d-%m-%Y %H:%M')"/></p>
           </div>
