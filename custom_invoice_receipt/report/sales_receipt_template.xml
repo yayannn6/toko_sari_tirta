@@ -3,68 +3,81 @@
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="so">
         <t t-set="company" t-value="so.company_id"/>
-        <div style="width:210px; font-size:10px; font-family:'Courier New', monospace;">
+        <div style="width:210px; font-size:10px; font-family:'Courier New', monospace; line-height:1.1;">
 
           <!-- HEADER COMPANY INFO -->
-          <div style="text-align:center;">
+          <div style="text-align:center; margin-bottom:2px;">
             <t t-if="company.logo">
-              <img t-att-src="'data:image/png;base64,%s' % company.logo.decode('utf-8')" width="60" style="margin-bottom:5px;"/>
+              <img t-att-src="'data:image/png;base64,%s' % company.logo.decode('utf-8')" width="55" style="margin-bottom:2px;"/>
             </t>
-            <h3 style="margin:0;"><t t-esc="company.name"/></h3>
-            <p style="margin:0;"><t t-esc="company.street or ''"/></p>
-            <p style="margin:0;"><t t-esc="company.phone or ''"/></p>
-            <p style="margin:0;"><t t-esc="company.website or ''"/></p>
-            <p>---------------------------</p>
+            <h3 style="margin:2px 0;"><t t-esc="company.name"/></h3>
+
+            <p style="margin:2px 0;"><t t-esc="company.street or ''"/></p>
+            <p style="margin:2px 0;"><t t-esc="company.phone or ''"/></p>
+            <p style="margin:2px 0;"><t t-esc="company.website or ''"/></p>
+
+            <p style="margin:2px 0;">---------------------------</p>
           </div>
 
           <!-- INFO -->
-          <p><b>No:</b> <t t-esc="so.name"/></p>
-          <p><b>Tanggal:</b> <t t-esc="so.date_order"/></p>
-          <p><b>Pelanggan:</b> <t t-esc="so.partner_id.name"/></p>
-          <p>---------------------------</p>
+          <p style="margin:2px 0;"><b>No:</b> <t t-esc="so.name"/></p>
+          <p style="margin:2px 0;"><b>Tanggal:</b> <t t-esc="so.date_order"/></p>
+          <p style="margin:2px 0;"><b>Pelanggan:</b> <t t-esc="so.partner_id.name"/></p>
+
+          <p style="margin:2px 0;">---------------------------</p>
 
           <!-- ITEM LIST -->
           <table style="width:100%; border:0; font-size:10px;">
             <t t-foreach="so.order_line" t-as="line">
+
               <tr>
-                <td colspan="2"><t t-esc="line.product_id.display_name"/></td>
+                <td colspan="3" style="padding:1px 0;">
+                  <t t-esc="line.product_id.display_name"/>
+                </td>
               </tr>
 
               <tr>
-                <td><t t-esc="line.product_uom_qty"/> x <t t-esc="'Rp {:,.0f}'.format(line.price_unit)"/></td>
-                <!-- DISKON (HANYA DITAMPILKAN JIKA ADA) -->
+                <td style="padding:1px 0;">
+                  <t t-esc="line.product_uom_qty"/> x <t t-esc="'Rp {:,.0f}'.format(line.price_unit)"/>
+                </td>
+
+                <!-- DISKON -->
                 <t t-if="line.discount_amount &gt; 0">
-                    <td colspan="2" style="font-size:9px; color:#444;">
-                      - <t t-esc="line.discount_amount"/>
-                    </td>
+                  <td style="font-size:9px; color:#444; padding:1px 0;">
+                    - <t t-esc="line.discount_amount"/>
+                  </td>
                 </t>
                 <t t-else="">
-                    <td colspan="2" style="font-size:9px; color:#444;">
-                    </td>
+                  <td style="font-size:9px; padding:1px 0;"></td>
                 </t>
-                <td style="text-align:right;">
+
+                <td style="text-align:right; padding:1px 0;">
                   <t t-esc="'Rp {:,.0f}'.format(line.price_subtotal)"/>
                 </td>
               </tr>
+
             </t>
           </table>
 
-          <p>---------------------------</p>
+          <p style="margin:2px 0;">---------------------------</p>
 
           <!-- TOTAL -->
-          <p><b>Total:</b>
+          <p style="margin:2px 0;">
+            <b>Total:</b>
             <span style="float:right;">
               <t t-esc="'Rp {:,.0f}'.format(so.amount_total)"/>
             </span>
           </p>
 
-          <p style="text-align:center;">---------------------------</p>
+          <p style="text-align:center; margin:2px 0;">---------------------------</p>
 
           <!-- FOOTER -->
           <div style="text-align:center;">
-            <p>Terima kasih!</p>
-            <p>---------------------------</p>
-            <p style="font-size:8px;">Dicetak pada <t t-esc="so.create_date.strftime('%d-%m-%Y %H:%M')"/></p>
+            <p style="margin:2px 0;">Terima kasih!</p>
+            <p style="margin:2px 0;">---------------------------</p>
+            <p style="margin:2px 0; font-size:8px;">
+              Dicetak pada <t t-esc="so.create_date.strftime('%d-%m-%Y %H:%M')"/>
+            </p>
           </div>
 
         </div>
