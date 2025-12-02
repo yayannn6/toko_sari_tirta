@@ -38,13 +38,13 @@
 
               <tr>
                 <td style="padding:1px 0;">
-                  <t t-esc="line.product_uom_qty"/> x <t t-esc="'Rp {:,.0f}'.format(line.price_unit)"/>
+                  <t t-esc="int(line.product_uom_qty)"/> x <t t-esc="'Rp {:,.0f}'.format(line.price_unit)"/>
                 </td>
 
                 <!-- DISKON -->
                 <t t-if="line.discount_amount &gt; 0">
                   <td style="font-size:9px; color:#444; padding:1px 0;">
-                    - <t t-esc="line.discount_amount"/>
+                    - <t t-esc="int(line.discount_amount)"/>
                   </td>
                 </t>
                 <t t-else="">
@@ -64,8 +64,8 @@
           <!-- TOTAL -->
           <p style="margin:2px 0;">
             <b>Total:</b>
-            <span style="float:right;">
-              <t t-esc="'Rp {:,.0f}'.format(so.amount_total)"/>
+            <span style="float:right; font-weight:bold; white-space:nowrap; display:inline-block;">
+              Rp <t t-esc="'{:,.0f}'.format(so.amount_total)"/>
             </span>
           </p>
 
