@@ -29,23 +29,19 @@
               <tr>
                 <td colspan="2"><t t-esc="line.product_id.display_name"/></td>
               </tr>
-              <!-- DISKON (HANYA DITAMPILKAN JIKA ADA) -->
-              <t t-if="line.discount_amount &gt; 0">
-                <tr>
-                  <td colspan="2" style="font-size:9px; color:#444;">
-                    - <t t-esc="line.discount_amount"/>
-                  </td>
-                </tr>
-              </t>
-              <t t-else="">
-                <tr>
-                  <td colspan="2" style="font-size:9px; color:#444;">
-                  </td>
-                </tr>
-              </t>
 
               <tr>
                 <td><t t-esc="line.product_uom_qty"/> x <t t-esc="'Rp {:,.0f}'.format(line.price_unit)"/></td>
+                <!-- DISKON (HANYA DITAMPILKAN JIKA ADA) -->
+                <t t-if="line.discount_amount &gt; 0">
+                    <td colspan="2" style="font-size:9px; color:#444;">
+                      - <t t-esc="line.discount_amount"/>
+                    </td>
+                </t>
+                <t t-else="">
+                    <td colspan="2" style="font-size:9px; color:#444;">
+                    </td>
+                </t>
                 <td style="text-align:right;">
                   <t t-esc="'Rp {:,.0f}'.format(line.price_subtotal)"/>
                 </td>
