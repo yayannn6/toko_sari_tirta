@@ -1,34 +1,36 @@
 <odoo>
     <template id="truk_belanja_template">
-        <t t-call="web.external_layout">
-            <div style="font-size:12px; width: 420px;">
+        <t t-call="web.html_container">
+            <div style="font-size:12px; width:420px; padding-top:20px;">
 
-                <h3 style="text-align:center;">
+                <h3 style="text-align:center; margin-bottom:5px;">
                     DAFTAR BARANG
                 </h3>
-                <hr/>
+                <hr style="margin-top:5px; margin-bottom:10px;"/>
 
-                <table style="width:100%; font-size:12px;">
+                <table style="width:100%; border-collapse:collapse; font-size:12px;">
                     <thead>
-                        <tr>
-                            <th style="text-align:left;">Barang</th>
-                            <th style="text-align:right;">Qty</th>
+                        <tr style="background:#f0f0f0; border-bottom:1px solid #ccc;">
+                            <th style="text-align:left; padding:4px 2px;">Barang</th>
+                            <th style="text-align:right; padding:4px 2px; width:60px;">Qty</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <t t-foreach="lines" t-as="line">
                             <tr>
-                                <td><t t-esc="line['product_name']"/></td>
-                                <td style="text-align:right;">
-                                    <t t-esc="line['qty']"/>
+                                <td style="padding:3px 2px; border-bottom:1px solid #eee;">
+                                    <t t-esc="line['product_name']"/>
+                                </td>
+                                <td style="text-align:right; padding:3px 2px; border-bottom:1px solid #eee;">
+                                    <t t-esc="line['qty']"/> Box
                                 </td>
                             </tr>
                         </t>
                     </tbody>
                 </table>
 
-                <hr/>
+                <hr style="margin-top:10px;"/>
             </div>
         </t>
     </template>

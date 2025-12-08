@@ -8,5 +8,5 @@ class TrukBelanjaWizard(models.TransientModel):
 
     def action_print(self):
         return self.env.ref(
-            'custom_invoice_report.action_truk_belanja_report'
+            'custom_invoice_receipt.action_truk_belanja_report'
         ).report_action(self)

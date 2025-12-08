@@ -44,7 +44,7 @@
                 <!-- DISKON -->
                 <t t-if="line.discount_amount &gt; 0">
                   <td style="font-size:9px; color:#444; padding:1px 0;">
-                    - <t t-esc="int(line.discount_amount)"/>
+                    - <t t-esc="'{:,.0f}'.format(line.discount_amount)"/>
                   </td>
                 </t>
                 <t t-else="">
