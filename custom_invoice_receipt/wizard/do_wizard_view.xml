@@ -6,6 +6,7 @@
             <form string="Print Truk Belanja">
                 <group>
                     <field name="sale_order_ids" widget="many2many_tags"/>
+                    <field name="driver_id"/>
                 </group>
 
                 <footer>

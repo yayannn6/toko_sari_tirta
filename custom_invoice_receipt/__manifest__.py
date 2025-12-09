@@ -5,7 +5,7 @@
     'summary': 'Print invoice and sales order in receipt format',
     'description': 'Generate small-format receipt printout for invoice and sales order (thermal printer style)',
     'author': 'Yayan Dev',
-    'depends': ['base', 'sale', 'account', 'stock'],
+    'depends': ['base', 'sale', 'account', 'stock', 'hr'],
     'data': [
         'report/report_action.xml',
         'report/invoice_receipt_template.xml',

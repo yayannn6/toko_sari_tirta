@@ -1,28 +1,37 @@
 <odoo>
     <template id="truk_belanja_template">
         <t t-call="web.html_container">
-            <div style="font-size:12px; width:420px; padding-top:20px;">
+            <div style="font-size:12px; width:420px; padding:20px 10px; line-height:1.4;">
 
-                <h3 style="text-align:center; margin-bottom:5px;">
+                <!-- HEADER DRIVER -->
+                <div style="margin-bottom:10px;">
+                    <p style="margin:0;">
+                        <strong>Driver:</strong>
+                        <span t-esc="driver_name"/>
+                    </p>
+                </div>
+
+                <!-- TITLE -->
+                <h3 style="text-align:center; margin:0; padding:0; font-size:14px;">
                     DAFTAR BARANG
                 </h3>
-                <hr style="margin-top:5px; margin-bottom:10px;"/>
+                <hr style="margin:6px 0;"/>
 
+                <!-- TABLE BARANG -->
                 <table style="width:100%; border-collapse:collapse; font-size:12px;">
                     <thead>
-                        <tr style="background:#f0f0f0; border-bottom:1px solid #ccc;">
-                            <th style="text-align:left; padding:4px 2px;">Barang</th>
-                            <th style="text-align:right; padding:4px 2px; width:60px;">Qty</th>
+                        <tr style="background:#f8f8f8; border-bottom:1px solid #ccc;">
+                            <th style="padding:5px 3px; text-align:left;">Barang</th>
+                            <th style="padding:5px 3px; text-align:right; width:60px;">Qty</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <t t-foreach="lines" t-as="line">
                             <tr>
-                                <td style="padding:3px 2px; border-bottom:1px solid #eee;">
+                                <td style="padding:4px 3px; border-bottom:1px solid #eee;">
                                     <t t-esc="line['product_name']"/>
                                 </td>
-                                <td style="text-align:right; padding:3px 2px; border-bottom:1px solid #eee;">
+                                <td style="padding:4px 3px; text-align:right; border-bottom:1px solid #eee;">
                                     <t t-esc="line['qty']"/> Box
                                 </td>
                             </tr>
@@ -30,7 +39,41 @@
                     </tbody>
                 </table>
 
-                <hr style="margin-top:10px;"/>
+                <!-- TOTALS -->
+                <hr style="margin:10px 0;"/>
+
+                <div style="margin-bottom:8px;">
+                    <p style="margin:2px 0;">
+                        <strong>Total Quantity:</strong>
+                        <span t-esc="int(total_qty)"/>
+                    </p>
+                    <p style="margin:2px 0;">
+                        <strong>Total Berat:</strong>
+                        <span t-esc="total_weight"/> kg
+                    </p>
+                    <p style="margin:2px 0;">
+                        <strong>Total Harga:</strong>
+                        Rp. <span t-esc="total_price"/>
+                    </p>
+                </div>
+
+                <!-- SALES ORDER LIST -->
+                <div style="margin-top:10px;">
+                    <p style="margin:2px 0;">
+                        <strong>Total SO:</strong>
+                        <span t-esc="int(total_so)"/>
+                    </p>
+
+                    <p style="margin:2px 0;">
+                        <strong>Daftar SO:</strong>
+                    </p>
+                    <ul style="margin:0; padding-left:18px;">
+                        <t t-foreach="so_names" t-as="so">
+                            <li t-esc="so"/>
+                        </t>
+                    </ul>
+                </div>
+
             </div>
         </t>
     </template>
