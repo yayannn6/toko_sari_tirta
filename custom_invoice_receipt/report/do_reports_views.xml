@@ -53,7 +53,7 @@
                     </p>
                     <p style="margin:2px 0;">
                         <strong>Total Harga:</strong>
-                        Rp. <span t-esc="total_price"/>
+                        <t t-esc="'Rp {:,.0f}'.format(total_price)"/>
                     </p>
                 </div>
 
