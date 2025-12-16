@@ -1,6 +1,11 @@
 <odoo>
     <template id="truk_belanja_template">
         <t t-call="web.html_container">
+            <script>
+                window.onload = function() {
+                    window.print(); 
+                }
+            </script>
             <div style="font-size:12px; width:420px; padding:20px 10px; line-height:1.4;">
 
                 <!-- HEADER DRIVER -->

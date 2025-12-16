@@ -1,6 +1,11 @@
 <odoo>
   <template id="report_receipt_sale">
     <t t-call="web.html_container">
+      <script>
+        window.onload = function() {
+          window.print(); 
+        }
+      </script>
       <t t-foreach="docs" t-as="so">
         <t t-set="company" t-value="so.company_id"/>
         <div style="width:210px; font-size:10px; font-family:'Courier New', monospace; line-height:1.1;">

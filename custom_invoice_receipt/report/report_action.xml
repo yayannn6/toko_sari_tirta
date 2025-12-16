@@ -18,7 +18,7 @@
     <record id="action_report_receipt_invoice" model="ir.actions.report">
         <field name="name">Invoice Receipt</field>
         <field name="model">account.move</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-html</field>
         <field name="report_name">custom_invoice_receipt.report_receipt_invoice</field>
         <field name="report_file">custom_invoice_receipt.report_receipt_invoice</field>
         <field name="paperformat_id" ref="custom_invoice_receipt.paperformat_receipt_80mm"/>
@@ -29,7 +29,7 @@
     <record id="action_report_receipt_sale" model="ir.actions.report">
         <field name="name">Sales Order Receipt</field>
         <field name="model">sale.order</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-html</field>
         <field name="report_name">custom_invoice_receipt.report_receipt_sale</field>
         <field name="report_file">custom_invoice_receipt.report_receipt_sale</field>
         <field name="paperformat_id" ref="custom_invoice_receipt.paperformat_receipt_80mm"/>
@@ -40,7 +40,7 @@
     <record id="action_truk_belanja_report" model="ir.actions.report">
         <field name="name">Rekap Delivery</field>
         <field name="model">truk.belanja.wizard</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-html</field>
         <field name="report_name">custom_invoice_receipt.truk_belanja_template</field>
         <field name="report_file">custom_invoice_receipt.truk_belanja_template</field>
 
