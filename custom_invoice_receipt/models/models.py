@@ -1,4 +1,5 @@
-from odoo import models
+from odoo import models, fields, api
+from datetime import timedelta
 
 class CustomReceipt(models.AbstractModel):
     _name = 'report.custom_invoice_receipt.report_receipt_invoice'
@@ -14,4 +15,9 @@ class CustomSalesReceipt(models.AbstractModel):
 
     def _get_report_values(self, docids, data=None):
         docs = self.env['sale.order'].browse(docids)
-        return {'docs': docs}
+        datenow = fields.Datetime.now() + timedelta(hours=7)
+
+        return {
+            'docs': docs,
+            'printed_dates': datenow,
+        }

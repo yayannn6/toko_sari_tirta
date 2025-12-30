@@ -9,30 +9,22 @@ class ReportTrukBelanja(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         wizard = self.env['truk.belanja.wizard'].browse(docids)
 
-        # ================================
-        # AMBIL DO (Stock Picking)
-        # ================================
         domain = [('state', '=', 'assigned')]
 
-        # Jika wizard memilih driver → filter DO yang punya driver tsb
-        if wizard.driver_id:
-            domain.append(('driver_id', '=', wizard.driver_id.id))
+        # Filter DO berdasarkan origin = SO.name
+        if wizard.sale_order_ids:
+            so_names = wizard.sale_order_ids.mapped('name')
+            domain.append(('origin', 'in', so_names))
+        else:
+            so_names = []
 
         pickings = self.env['stock.picking'].search(domain)
         for picking in pickings:
             picking.with_context(skip_backorder=False, cancel_backorder=False).button_validate()
 
-
-        # ================================
-        # KUMPULKAN SO DARI DO (origin)
-        # ================================
-        so_names = list({
-            p.origin for p in pickings
-        })
-
-        # ================================
+        # ======================
         # Hitungan Produk
-        # ================================
+        # ======================
         product_totals = defaultdict(float)
         total_qty = 0
         total_weight = 0
@@ -60,11 +52,13 @@ class ReportTrukBelanja(models.AbstractModel):
             'doc_model': 'truk.belanja.wizard',
             'docs': wizard,
 
+            # Data Produk
             'lines': lines,
             'total_qty': total_qty,
             'total_weight': total_weight,
             'total_price': total_price,
 
+            # Informasi tambahan
             'driver_name': wizard.driver_id.name if wizard.driver_id else '',
             'total_so': len(so_names),
             'so_names': so_names,

@@ -14,4 +14,22 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_sale_order_form_receipt_button" model="ir.ui.view">
+        <field name="name">sale.order.form.receipt.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_print_receipt"
+                    type="object"
+                    string="Print Receipt"
+                    class="btn-primary"
+                    groups="sales_team.group_sale_manager,sales_team.group_sale_salesman_all_leads"
+                />
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
