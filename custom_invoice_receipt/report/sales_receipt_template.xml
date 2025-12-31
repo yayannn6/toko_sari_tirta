@@ -88,6 +88,12 @@
 
             <p style="margin:4px 0;">---------------------------</p>
 
+            <p style="margin:4px 0;font-size:14px">
+              <b>Diskon:</b>
+              <span style="float:right; font-weight:bold; white-space:nowrap; display:inline-block;">
+                Rp <t t-esc="'{:,.0f}'.format(so.total_discount_amount)"/>
+              </span>
+            </p>
             <!-- TOTAL -->
             <p style="margin:4px 0;font-size:14px">
               <b>Total:</b>
