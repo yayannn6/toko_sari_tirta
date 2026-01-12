@@ -22,7 +22,7 @@
           <t t-set="company" t-value="so.company_id"/>
 
           <!-- ⬇️ HANYA line-height dinaikkan -->
-          <div class="receipt-font" style="width:210px; font-size:14px; line-height:1.35; font-weight:600;">
+          <div class="receipt-font" style="width:210px; font-size:14px; line-height:1;">
 
             <!-- HEADER COMPANY INFO -->
             <div style="text-align:center; margin-bottom:4px;">
@@ -30,56 +30,56 @@
                 <img t-att-src="'data:image/png;base64,%s' % company.logo.decode('utf-8')" width="55" style="margin-bottom:4px;"/>
               </t>
 
-              <h5 style="margin:4px 0;font-weight:700;">
+              <h5 style="font-weight:700;">
                 <t t-esc="company.name"/>
               </h5>
 
-              <p style="margin:4px 0;font-size:13px"><t t-esc="company.street or ''"/></p>
-              <p style="margin:4px 0;font-size:13px"><t t-esc="company.phone or ''"/></p>
-              <p style="margin:4px 0;font-size:13px"><t t-esc="company.website or ''"/></p>
+              <p style="font-size:13px;font-weight:400;margin:1px"><t t-esc="company.street or ''"/></p>
+              <p style="font-size:13px;font-weight:400;margin:1px"><t t-esc="company.phone or ''"/></p>
+              <p style="font-size:13px;font-weight:400;margin:1px"><t t-esc="company.website or ''"/></p>
 
               <p style="margin:4px 0;">---------------------------</p>
             </div>
 
             <!-- INFO -->
-            <p style="margin:4px 0;font-size:13px"><b>No:</b> <t t-esc="so.name"/></p>
-            <p style="margin:4px 0;font-size:13px"><b>Tanggal:</b> <t t-esc="so.date_order"/></p>
-            <p style="margin:4px 0;font-size:13px"><b>Pelanggan:</b> <t t-esc="so.partner_id.name"/></p>
+            <p style="font-size:13px;font-weight:400;margin:1px">No: <t t-esc="so.name"/></p>
+            <p style="font-size:13px;font-weight:400;margin:1px">Tanggal: <t t-esc="so.date_order.strftime('%d-%m-%Y')"/></p>
+            <p style="font-size:13px;font-weight:400;margin:1px">Pelanggan: <t t-esc="so.partner_id.name"/></p>
 
             <p style="margin:4px 0;">---------------------------</p>
 
             <!-- ITEM LIST -->
-            <table style="width:100%; border:0; font-size:14px; line-height:1.1;">
+            <table style="width:100%; border:0; font-size:14px; line-height:1.1;font-weight:400">
               <t t-foreach="so.order_line" t-as="line">
 
-                <tr>
-                  <td colspan="3" style="padding:3px 0;">
+                <tr style="margin:1px">
+                  <td colspan="3" style="padding:1px 0">
                     <t t-esc="line.product_id.name"/>
                   </td>
                 </tr>
 
-                <tr>
-                  <td style="padding:3px 0;">
+                <tr style="margin:1px">
+                  <td style="padding:1px 0;">
                     <t t-esc="int(line.product_uom_qty)"/> x
                     <t t-esc="'Rp {:,.0f}'.format(line.price_unit)"/>
                   </td>
 
                   <!-- DISKON -->
                   <t t-if="line.discount_amount &gt; 0">
-                    <td style="font-size:12px; color:#444; padding:3px 0;">
+                    <td style="font-size:12px; color:#444; padding:1px 0;">
                       - <t t-esc="'{:,.0f}'.format(line.discount_amount)"/>
                     </td>
                   </t>
                   <t t-else="">
-                    <td style="font-size:12px; padding:3px 0;"/>
+                    <td style="font-size:12px; padding:1px 0;"/>
                   </t>
 
-                  <td style="text-align:right; padding:3px 0;font-size:14px">
+                  <td style="text-align:right; padding:1px 0;font-size:14px">
                     <t t-esc="'Rp {:,.0f}'.format(line.price_subtotal)"/>
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="3" style="padding:5px 0;">
+                  <td colspan="3" style="padding:5px 0">
                   </td>
                 </tr>
 
@@ -88,16 +88,16 @@
 
             <p style="margin:4px 0;">---------------------------</p>
 
-            <p style="margin:4px 0;font-size:14px">
-              <b>Diskon:</b>
-              <span style="float:right; font-weight:bold; white-space:nowrap; display:inline-block;">
+            <p style="margin:4px 0;font-size:14px;font-weight:400">
+              Diskon:
+              <span style="float:right; white-space:nowrap; display:inline-block;">
                 Rp <t t-esc="'{:,.0f}'.format(so.total_discount_amount)"/>
               </span>
             </p>
             <!-- TOTAL -->
-            <p style="margin:4px 0;font-size:14px">
-              <b>Total:</b>
-              <span style="float:right; font-weight:bold; white-space:nowrap; display:inline-block;">
+            <p style="margin:4px 0;font-size:14px;font-weight:400">
+              Total:
+              <span style="float:right; white-space:nowrap; display:inline-block;">
                 Rp <t t-esc="'{:,.0f}'.format(so.amount_total)"/>
               </span>
             </p>
@@ -105,7 +105,7 @@
             <p style="text-align:center; margin:4px 0;">---------------------------</p>
 
             <!-- FOOTER -->
-            <div style="text-align:center;">
+            <div style="text-align:center;;font-weight:400">
               <p style="margin:4px 0;font-size:13px">Terima kasih!</p>
               <p style="margin:4px 0;">---------------------------</p>
               <p style="margin:4px 0; font-size:13px;">

@@ -18,7 +18,7 @@
             </style>
 
             <!-- ⬇️ line-height sedikit dinaikkan -->
-            <div class="receipt-font" style="width:210px; font-size:14px; line-height:1.45; font-weight:600;">
+            <div class="receipt-font" style="width:210px; font-size:14px; line-height:1; font-weight:400;">
 
                 <!-- HEADER DRIVER -->
                 <div style="margin-bottom:12px;">
@@ -84,11 +84,11 @@
                     <p style="margin:4px 0;">
                         <strong>Daftar SO:</strong>
                     </p>
-                    <ul style="margin:4px 0; padding-left:20px;">
+                    <!-- <ul style="margin:4px 0; padding-left:20px;"> -->
                         <t t-foreach="so_names" t-as="so">
-                            <li style="margin:3px 0;" t-esc="so"/>
+                            <span style="margin:3px 0;" t-esc="so"/>,
                         </t>
-                    </ul>
+                    <!-- </ul> -->
                 </div>
 
             </div>
