@@ -9,7 +9,7 @@ class ReportTrukBelanja(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         wizard = self.env['truk.belanja.wizard'].browse(docids)
 
-        domain = [('state', '=', 'assigned')]
+        domain = []
 
         # Filter DO berdasarkan origin = SO.name
         if wizard.sale_order_ids:

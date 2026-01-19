@@ -18,7 +18,7 @@
             </style>
 
             <!-- ⬇️ line-height sedikit dinaikkan -->
-            <div class="receipt-font" style="width:210px; font-size:14px; line-height:1; font-weight:400;">
+            <div class="receipt-font" style="width:210px; font-size:14px; line-height:1; font-weight:550;">
 
                 <!-- HEADER DRIVER -->
                 <div style="margin-bottom:12px;">
